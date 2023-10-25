@@ -13,7 +13,6 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 
 data = pd.read_csv('bank.csv', sep = ';')
-data
 
 # Подготовим данные
 X = data.drop('y', axis=1)
