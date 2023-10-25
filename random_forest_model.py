@@ -7,31 +7,26 @@ Original file is located at
     https://colab.research.google.com/drive/18a37l1FWxUaoA82bIztj4DemBOn7wCbb
 """
 
+# random_forest_model.py
+
 import pandas as pd
-from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score
 
-data = pd.read_csv('bank.csv', sep = ';')
+def predict_subscription_status(input_data):
+    # Загрузим модель
+    model = RandomForestClassifier(n_estimators=100, random_state=42)
+    
+    # Загрузим данные
+    data = pd.read_csv('bank.csv', sep=';')
+    X = data.drop('y', axis=1)
+    y = data['y']
+    X = pd.get_dummies(X, drop_first=True)
 
-# Подготовим данные
-X = data.drop('y', axis=1)
-y = data['y']
-X = pd.get_dummies(X, drop_first=True)
+    # Обучим модель
+    model.fit(X, y)
 
-# Разделим данные на тренировочную и тестовую выборки
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    # Предскажем результаты
+    y_pred = model.predict(input_data)
 
-# Обучим модель
-model = RandomForestClassifier(n_estimators=100, random_state=42)
-model.fit(X_train, y_train)
-
-# Предскажем результаты
-y_pred = model.predict(X_test)
-
-# Посчитаем точность модели
-accuracy = accuracy_score(y_test, y_pred)
-
-# Выведем точность
-print(f"Точность модели: {accuracy}")
+    return y_pred
 
