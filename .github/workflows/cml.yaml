@@ -1,0 +1,29 @@
+name: Generate Report
+
+on:
+  push:
+    branches:
+      - laba4
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: Run Script
+        run: python generate_report.py
+      
+      - name: Publish Image
+        run: cml-publish confusion_matrix.png --md >> report.md
