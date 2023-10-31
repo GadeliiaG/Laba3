@@ -29,4 +29,3 @@ def predict_subscription_status(input_data):
     y_pred = model.predict(input_data)
 
     return y_pred
-
