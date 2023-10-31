@@ -3,7 +3,7 @@ train-and-report:
   script:
     - echo REPO_TOKEN
     - pip install -r requirements.txt
-    - python train.py  # generate plot.png
+    - python train1.py  # generate plot.png
     # Create CML report
     - cat metrics.txt >> report.md
     - echo '![](./plot.png "Confusion Matrix")' >> report.md
