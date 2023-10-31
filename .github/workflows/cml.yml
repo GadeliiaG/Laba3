@@ -23,7 +23,7 @@ jobs:
       - name: Train and generate report
         run: |
           echo REPO_TOKEN
-          python train.py  # generate plot.png
+          python train1.py  # generate plot.png
           cat metrics.txt >> report.md
           echo '![](./plot.png "Confusion Matrix")' >> report.md
 
