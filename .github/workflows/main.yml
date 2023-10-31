@@ -23,3 +23,14 @@ jobs:
 
       - name: Run tests
         run: python test_rf.py
+        
+      - name: Generate report
+        run: python report.py
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: Reports
+          path: |
+            metrics.txt
+            plot.png  
