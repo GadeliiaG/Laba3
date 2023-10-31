@@ -34,3 +34,11 @@ jobs:
           path: |
             metrics.txt
             plot.png
+      
+      - name: Print current working directory
+        run: pwd
+        
+      - name: List files in working directory
+        run: ls -R
+
+      
