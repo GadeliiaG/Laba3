@@ -12,6 +12,7 @@ from metrics import calculate_metrics, plot_example
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
+from PIL import Image
 
 
 # Загрузка данных
@@ -36,6 +37,8 @@ y_pred = model.predict(X_test)
 
 accuracy, cm = calculate_metrics(y_true, y_pred)
 
+correct_example = Image.open("confusion_matrix.png")
+incorrect_example = Image.open("confusion_matrix_incorrect.png")
 plot_example(correct_example, incorrect_example)  # Замените аргументы на конкретные примеры
 
 # Сохраните метрики в файл metrics.txt
