@@ -26,7 +26,7 @@ def generate_report():
 
     # Посчитаем метрики
     accuracy = accuracy_score(y, y_pred)
-    recall = recall_score(y, y_pred)
+    recall = recall_score(y, y_pred, pos_label='yes')  # Указываем 'yes' как положительную метку
 
     # Сохраним метрики в файл
     with open('metrics.txt', 'w') as file:
