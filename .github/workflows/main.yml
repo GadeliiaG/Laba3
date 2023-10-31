@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - laba4
+
+jobs:
+  test:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run tests
+        run: python test_rf.py
+
+      - name: Generate report
+        run: python report.py
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: Reports
+          path: |
+            metrics.txt
+            plot.png
