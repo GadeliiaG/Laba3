@@ -1,8 +1,0 @@
-pandas
-scikit-learn
-Pillow
-<<<<<<< HEAD
-matplotlib
-=======
-matplotlib
->>>>>>> dc59bd4b6f7884edca292827afdd079eef659399
