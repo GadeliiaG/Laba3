@@ -32,7 +32,7 @@ model.fit(X_train, y_train)
 
 # После обучения модели
 y_true = y_test
-# y_pred = # Предсказанные метки
+y_pred = model.predict(X_test)
 
 accuracy, cm = calculate_metrics(y_true, y_pred)
 
